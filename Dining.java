@@ -1,13 +1,15 @@
+import java.util.PriorityQueue;
+
 public class Dining {
-    
 
     public static void main(String[] args){
+
+
         Philosopher a = new Philosopher();
         Philosopher b = new Philosopher();
         Philosopher c = new Philosopher();
         Philosopher d = new Philosopher();
         Philosopher e = new Philosopher();
-
 
         Chopstick c1 = new Chopstick();
         Chopstick c2 = new Chopstick();
@@ -15,7 +17,19 @@ public class Dining {
         Chopstick c4 = new Chopstick();
         Chopstick c5 = new Chopstick();
 
-        // System.out.println(a.name + " " + b.name + " " + c.name + " " + d.name + " " + e.name);
-        // System.out.println(c1.position + " " + c2.position + " " + c3.position + " " + c4.position + " " + c5.position);
+        Philosopher[] philosophers = {a, b, c, d, e};
+        Chopstick[] chopsticks = {c1, c2, c3, c4, c5};
+        int len = philosophers.length;
+        PriorityQueue<Philosopher> pq = new PriorityQueue<>();
+
+        for (int i = 0; i < len; i++){ //initialize the priority queue
+            pq.add(philosophers[i]);
+        }
+
+
+        
+
+
+
     }
 }

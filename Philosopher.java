@@ -1,11 +1,11 @@
 public class Philosopher {
     int hunger;
     char name;
-    int nameNum = 64;
+    static int nameNum = 64;
 
     public Philosopher(){
         this.hunger = 0;
-        this.nameNum += 1;
+        nameNum += 1;
         this.name = (char) nameNum;
     }
 

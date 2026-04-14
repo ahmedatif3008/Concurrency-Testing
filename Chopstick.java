@@ -1,10 +1,12 @@
 public class Chopstick {
-    int position = -1;
+    static int positionalIterator = -1;
     boolean using;
+    int position;
 
     public Chopstick(){
-        this.position += 1;
+        positionalIterator += 1;
         this.using = false;
+        this.position = positionalIterator;
     }
-    
+
 }

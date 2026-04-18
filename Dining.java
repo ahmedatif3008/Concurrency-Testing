@@ -48,7 +48,7 @@ public class Dining {
         int len = philosophers.length;
 
         PriorityQueue<Philosopher> pq = new PriorityQueue<>(
-            (x, y) -> x.hunger - y.hunger
+            (x, y) -> y.hunger - x.hunger 
         ); //comparator for the pq
 
         for (int i = 0; i < len; i++){ //initialize the priority queue
@@ -72,30 +72,57 @@ public class Dining {
 
 
             p1 = pq.poll();
-            p2 = pq.poll(); // caveat
+            
 
             printPhilosopoherList(philosophers);
             
 
             Stack<Philosopher> stck = new Stack<>();
 
-            // while ((p1.left != p2.right) || (p2.right != p1.left)){
-            //     stck.add(p2);
-            //     p2 = pq.poll();
+            while (true){
+                p2 = pq.poll();
+                
+                if ((p1.left == p2.right) || (p1.right == p2.left)){
+                    stck.add(p2);
+                }
+                else {
+                    break;
+                }
+            
+            }
+
+
+
+            // while ((p1.left == pq.peek().right) || (p1.right == pq.peek().left)){
+            //     //System.out.println("hello");
+
             // }
+
+            while (stck.size() != 0){
+                pq.add(stck.pop());
+            }
 
             p1.run();
             p2.run();
 
+            try {
+                Thread.sleep(3000);
+            }
+            catch (Exception l){
+                System.out.println("error");
+            }
+            
+            System.out.println(p1.name + " and " + p2.name + " are eating::" + pq.size());
 
             for (int i = 0; i < philosophers.length; i++){
                 if ((!philosophers[i].equals(p1)) && (!philosophers[i].equals(p2))){
                     philosophers[i].starve();
+                    
                 }
             }
             counter++;
 
-            if (counter == 5){ break;}
+            if (counter == 100){ break;}
         }
 
         

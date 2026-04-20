@@ -1,14 +1,21 @@
 declaration, initialization
 if conditions, if elif else, CASE concept
 OUTPUT <- PRINTING, INPUT
-
+procedure + functions
 
 arrays, Loops 
-
-
-
 records
 
+sorting, nested ifs
+
+car:
+    string color
+    int size
+    boolean 4wheeler
+    boolean petrol
+
+
+car ("blue", "400", "true", "false")
 
 
 -________

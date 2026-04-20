@@ -16,16 +16,44 @@ public class Philosopher extends Thread{
         this.right = r;
     }
 
-    public void starve(){
+    public void think(){
         this.hunger += 1;
     }
 
     public void eat(){
         this.hunger = 0;
         this.eating = true;
+        this.left.pickUp();
+        this.right.pickUp();
     }
 
-    public void run(){
-        eat();
+    public void stopEating(){
+        this.eating = false;
+        this.left.putDown();
+        this.right.putDown();
     }
+
+    public synchronized void run(){
+        int counter = 0;
+        while (true){ 
+            eat();
+            System.out.println("Philosopher " + this.name + " is eating");
+            try {
+                Thread.sleep(3000);
+            }
+                catch (Exception l){
+                System.out.println("error");
+            }
+            stopEating();
+            
+            counter++;
+            if (counter == 2){
+                break;
+            }
+
+        }
+            
+    }
+
+    
 }

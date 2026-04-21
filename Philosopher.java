@@ -37,7 +37,7 @@ public class Philosopher extends Thread{
         int counter = 0;
         while (true){ 
             eat();
-            System.out.println("Philosopher " + this.name + " is eating");
+            System.out.println("Philosopher " + this.name + " is eating " + this.hunger + " : ");
             try {
                 Thread.sleep(3000);
             }
@@ -47,9 +47,7 @@ public class Philosopher extends Thread{
             stopEating();
             
             counter++;
-            if (counter == 2){
-                break;
-            }
+
 
         }
             

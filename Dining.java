@@ -116,7 +116,7 @@ public class Dining {
 
             for (int i = 0; i < philosophers.length; i++){
                 if ((!philosophers[i].equals(p1)) && (!philosophers[i].equals(p2))){
-                    philosophers[i].starve();
+                    philosophers[i].think();
                     
                 }
             }

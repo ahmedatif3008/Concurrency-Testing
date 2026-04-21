@@ -5,7 +5,16 @@ import java.util.Stack;
 
 public class Runner {
 
-   
+       public static void printPhilosopoherList(Philosopher[] phil){
+        System.out.print("[ ");
+
+
+        for (int i = 0; i < phil.length; i++){
+            System.out.print(phil[i].name + ", " + phil[i].hunger + ", " + phil[i].eating + " ||| ");
+        }
+
+        System.out.print("] \n");
+    }
 
     public static void main(String[] args){
 
@@ -38,5 +47,16 @@ public class Runner {
 
         
 
+        for (int i = 0; i < 5; i++) {
+            try {
+                Thread.sleep(2000);
+            } catch (Exception x) {
+                // TODO: handle exception
+            }
+            printPhilosopoherList(philosophers);
+        }
+
     }
+
+
 }

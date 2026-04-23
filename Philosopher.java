@@ -27,7 +27,20 @@ public class Philosopher extends Thread{
         this.right.pickUp();
     }
 
+        public void eat2(){
+        this.hunger = 0;
+        this.eating = true;
+        this.right.pickUp();
+        this.left.pickUp();
+    }
+
     public void stopEating(){
+        this.eating = false;
+        this.left.putDown();
+        this.right.putDown();
+    }
+
+    public void stopEating2(){
         this.eating = false;
         this.left.putDown();
         this.right.putDown();
@@ -36,7 +49,13 @@ public class Philosopher extends Thread{
     public synchronized void run(){
         int counter = 0;
         while (true){ 
-            eat();
+            if (this.name == 'A'){
+                eat2();
+            }
+            else{
+                eat();
+            }
+            
             System.out.println("Philosopher " + this.name + " is eating " + this.hunger + " : ");
             try {
                 Thread.sleep(3000);
@@ -44,6 +63,7 @@ public class Philosopher extends Thread{
                 catch (Exception l){
                 System.out.println("error");
             }
+
             stopEating();
             
             counter++;
